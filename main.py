@@ -23,7 +23,7 @@ def send_telegram_message(text):
 @app.route("/", methods=["POST"])
 def webhook():
     data = request.json
-    print("Webhook received:", data)
+    print("Webhook received:", data)  # ✅ You'll now see this in Render logs
 
     pair = data.get("pair", "Unknown")
     side = data.get("side", "BUY")
