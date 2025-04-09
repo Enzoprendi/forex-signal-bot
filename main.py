@@ -16,14 +16,14 @@ def send_telegram_message(text):
     }
     try:
         response = requests.post(url, json=payload)
-        print("Telegram response:", response.text)
+        print("Telegram response:", response.status_code, response.text)
     except Exception as e:
-        print("Error sending Telegram message:", e)
+        print("Error sending Telegram message:", str(e))
 
 @app.route("/", methods=["POST"])
 def webhook():
     data = request.json
-    print("Webhook received:", data)  # ✅ You'll now see this in Render logs
+    print("Webhook received:", data)
 
     pair = data.get("pair", "Unknown")
     side = data.get("side", "BUY")
