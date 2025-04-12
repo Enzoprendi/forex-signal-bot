@@ -35,7 +35,7 @@ def webhook():
 💹 *{pair}* – *{side.upper()}* Signal  
 📍 *Entry*: {entry}  
 🎯 *TP*: {tp}  
-🛡 *SL*: {sl}  
+🛡 SL: {sl}  
 #forex #signals #LFX
 """
     send_telegram_message(message.strip())
@@ -48,4 +48,3 @@ def home():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
