@@ -15,10 +15,13 @@ def send_telegram_message(text):
         "parse_mode": "Markdown"
     }
     try:
-        response = requests.post(url, json=payload)
-        print("Telegram response:", response.status_code, response.text)
-    except Exception as e:
-        print("Error sending Telegram message:", str(e))
+    response = requests.post(url, json=payload)
+    print("Telegram response:", response.status_code, response.text)
+    return response
+except Exception as e:
+    print("Error sending Telegram message:", str(e))
+    return None
+
 
 @app.route("/", methods=["POST"])
 def webhook():
