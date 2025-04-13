@@ -14,14 +14,11 @@ def send_telegram_message(text):
         "text": text,
         "parse_mode": "Markdown"
     }
-
     try:
         response = requests.post(url, json=payload)
         print("Telegram response:", response.status_code, response.text)
-        return response
     except Exception as e:
         print("Error sending Telegram message:", str(e))
-        return None
 
 @app.route("/", methods=["POST"])
 def webhook():
@@ -38,7 +35,7 @@ def webhook():
 💹 *{pair}* – *{side.upper()}* Signal  
 📍 *Entry*: {entry}  
 🎯 *TP*: {tp}  
-🛡 SL: {sl}  
+🛡 *SL*: {sl}  
 #forex #signals #LFX
 """
     send_telegram_message(message.strip())
@@ -49,7 +46,7 @@ def home():
     return "Bot is running."
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
 
 
